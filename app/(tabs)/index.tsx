@@ -1,10 +1,8 @@
-import {Text, View} from "react-native";
 import '@/styles/global.css'
+import {Home} from "@/pages/home";
 
 export default function Index() {
     return (
-        <View className={'flex-1 justify-center items-center'}>
-            <Text>HI</Text>
-        </View>
+        <Home />
     );
 }

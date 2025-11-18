@@ -1,0 +1,1 @@
+export {Clock} from '@/entities/clock/ui/Clock'
