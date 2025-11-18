@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        './app/**/*.{tsx,ts}',
-        './pages/**/*.{tsx,ts}',
-        './widgets/**/*.{tsx,ts}',
-        './features/**/*.{tsx,ts}',
-        './entities/**/*.{tsx,ts}',
-        './shared/**/*.{tsx,ts}'
+        "./app/**/*.{ts,tsx}",
+        "./pages/**/*.{ts,tsx}",
+        "./widgets/**/*.{ts,tsx}",
+        "./features/**/*.{ts,tsx}",
+        "./entities/**/*.{ts,tsx}",
+        "./shared/**/*.{ts,tsx}",
     ],
     presets: [require('nativewind/preset')],
     theme: {
