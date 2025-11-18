@@ -15,9 +15,10 @@ export function useClock() {
     const minutes = time.getMinutes();
     const hours = time.getHours();
 
-    const secondDegree = seconds * 6;
-    const minuteDegree = minutes * 6 + seconds * 0.1;
-    const hourDegree = (hours % 12) * 30 + minutes * 0.5;
+
+    const secondDegree = seconds * 6 + 90;
+    const minuteDegree = minutes * 6 + seconds * 0.1 + 90;
+    const hourDegree = (hours % 12) * 30 + minutes * 0.5 + 90;
 
     return {time, hourDegree, minuteDegree, secondDegree};
 }
