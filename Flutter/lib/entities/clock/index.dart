@@ -1,0 +1,1 @@
+export 'package:view_timer/entities/clock/ui/clock.dart';
