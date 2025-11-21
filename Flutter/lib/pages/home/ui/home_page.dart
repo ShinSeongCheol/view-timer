@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:view_timer/entities/clock/index.dart';
+import 'package:view_timer/features/timer/index.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,16 +7,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-      ),
+      appBar: AppBar(),
       body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Clock()
-            ],
-          )
+        child: Timer()
       ),
     );
   }
