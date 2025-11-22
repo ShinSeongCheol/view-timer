@@ -11,7 +11,6 @@ void main() {
         ),
       ),
       home: HomePage(),
-      initialRoute: '/',
     ),
   );
 }

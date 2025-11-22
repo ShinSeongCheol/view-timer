@@ -1,1 +1,1 @@
-export 'package:view_timer/features/timer/ui/timer.dart';
+export 'package:view_timer/features/timer/ui/timer_feature.dart';

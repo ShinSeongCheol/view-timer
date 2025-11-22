@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:view_timer/entities/clock/index.dart';
+import 'package:view_timer/entities/timer/ui/timer.dart';
 
-class Timer extends StatefulWidget {
-  const Timer({super.key});
+class TimerFeature extends StatefulWidget {
+  const TimerFeature({super.key});
 
   @override
-  State<Timer> createState() => _Timer();
+  State<TimerFeature> createState() => _TimerFeature();
 }
 
-class _Timer extends State<Timer> {
+class _TimerFeature extends State<TimerFeature> {
   bool isPlaying = false;
 
   @override
@@ -16,7 +17,7 @@ class _Timer extends State<Timer> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Clock(),
+        Timer(),
         Text('11:00:00'),
         FloatingActionButton(
           onPressed: () {
