@@ -42,6 +42,11 @@ class Timer extends StatelessWidget {
             child: CustomPaint(painter: MinuteTextPainter()),
           ),
         ),
+        SizedBox(
+          width: 200,
+          height: 200,
+          child: BackgroundCirclePainter()
+        ),
       ],
     );
   }
@@ -133,4 +138,91 @@ class MinuteTextPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+// class BackgroundCirclePainter extends CustomPainter {
+//   double angle = pi / 4;
+//
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     final paint = Paint();
+//     Offset p1 = Offset(150, 150);
+//     Offset p2 = Offset(150 + 150 * cos(angle), 150 + 150 * sin(angle));
+//     canvas.drawLine(p1, p2, paint);
+//   }
+//
+//   @override
+//   bool shouldRepaint(CustomPainter oldDelegate) => false;
+// }
+
+class BackgroundCirclePainter extends StatefulWidget {
+  const BackgroundCirclePainter({super.key});
+
+  @override
+  State<BackgroundCirclePainter> createState() => _BackgroundCirclePainter();
+}
+
+class _BackgroundCirclePainter extends State<BackgroundCirclePainter> {
+  double angle = 0;
+  double width = 300;
+  double height = 300;
+
+  late double centerX = width / 2;
+  late double centerY = height / 2;
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerMove: (e) {
+        final px = e.localPosition.dx;
+        final py = e.localPosition.dy;
+
+        final dx = px - centerX;
+        final dy = py - centerY;
+
+        setState(() {
+          angle = atan2(dy, dx);
+        });
+      },
+      onPointerDown: (e) {
+        final px = e.localPosition.dx;
+        final py = e.localPosition.dy;
+
+        final dx = px - centerX;
+        final dy = py - centerY;
+
+        setState(() {
+          angle = atan2(dy, dx);
+        });
+      },
+      child: CustomPaint(
+          painter: BackgroundPainter(width: width, height: height, angle: angle)
+      )
+    );
+  }
+
+}
+
+class BackgroundPainter extends CustomPainter {
+
+  double width = 300;
+  double height = 300;
+  double angle = 0;
+  late double r = width / 2;
+
+  BackgroundPainter({required this.width, required this.height, required this.angle});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint();
+    paint.strokeWidth = 3;
+
+    canvas.drawLine(Offset(width / 2, height / 2), Offset(r + r * cos(angle), r + r * sin(angle)), paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant BackgroundPainter oldDelegate) {
+    return oldDelegate.angle != angle;
+  }
+
 }
