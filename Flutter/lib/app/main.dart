@@ -10,7 +10,12 @@ void main() {
           brightness: Brightness.light,
         ),
       ),
-      home: HomePage(),
+      home: Scaffold(
+        appBar: AppBar(title: const Text("hello"),),
+        body: HomePage(),
+        // bottomNavigationBar: NavigationBar(destinations: destinations),
+      )
+
     ),
   );
 }

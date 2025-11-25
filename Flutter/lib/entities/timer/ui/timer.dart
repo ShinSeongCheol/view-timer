@@ -10,6 +10,12 @@ class Timer extends StatelessWidget {
     double width = 300;
     double height = 300;
 
+    double centerY;
+    double px;
+    double py;
+    double dx;
+    double dy;
+    double centerX;
     return Stack(
       children: [
         CircleContainer(width: width, height: height),
@@ -17,7 +23,24 @@ class Timer extends StatelessWidget {
         SizedBox(
           width: width,
           height: height,
-          child: CustomPaint(painter: MinuteTextPainter()),
+          child: Listener(
+            onPointerMove: (e) {
+              final centerX = width / 2;
+              final centerY = height / 2;
+
+              final px = e.localPosition.dx;
+              final py = e.localPosition.dy;
+
+              final dx = px - centerX;
+              final dy = py - centerY;
+
+              double angleDeg = atan2(dy, dx) * 180 / pi + 90;
+
+              angleDeg %= 360;
+              if (angleDeg < 0) angleDeg += 360;
+            },
+            child: CustomPaint(painter: MinuteTextPainter()),
+          ),
         ),
       ],
     );
